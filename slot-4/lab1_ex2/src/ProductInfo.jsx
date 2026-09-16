@@ -1,19 +1,18 @@
-import { Card as BsCard, ListGroup } from 'react-bootstrap'
+import Card from 'react-bootstrap/Card'
+import Badge from 'react-bootstrap/Badge'
+import Button from 'react-bootstrap/Button'
 
-function ProductInfo({ name, price, tags, description }) {
+function ProductInfo({ name, price, tag, avatar }) {
   return (
-    <BsCard className="shadow-sm border-0">
-      <BsCard.Body>
-        <BsCard.Title as="h2" className="h4 mb-3">Thông tin sản phẩm</BsCard.Title>
-
-        <ListGroup variant="flush">
-          <ListGroup.Item><strong>Tên sản phẩm:</strong> {name}</ListGroup.Item>
-          <ListGroup.Item><strong>Giá:</strong> {price}</ListGroup.Item>
-          <ListGroup.Item><strong>Mô tả:</strong> {description}</ListGroup.Item>
-          <ListGroup.Item><strong>Tags:</strong> {tags?.join(', ')}</ListGroup.Item>
-        </ListGroup>
-      </BsCard.Body>
-    </BsCard>
+    <Card style={{ width: '18rem' }}>
+      <Card.Img variant="top" src={avatar} />
+      <Badge bg="primary" className="position-absolute top-0 end-0 m-2">{tag}</Badge>
+      <Card.Body>
+        <Card.Title>{name}</Card.Title>
+        <Card.Text>Price: ${price}</Card.Text>
+        <Button variant="primary">Buy Now</Button>
+      </Card.Body>
+    </Card>
   )
 }
 
