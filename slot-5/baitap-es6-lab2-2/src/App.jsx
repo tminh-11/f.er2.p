@@ -2,10 +2,21 @@ import WelcomeCard from './components/WelcomeCard';
 import StudentCard from './components/StudentCard';
 import ProductCard from './components/ProductCard';
 import ProductList from './components/ProductList';
+import AppButton from './components/AppButton';
+import InputField from './components/InputField';
+import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
+import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import { products } from './data/products';
 import './App.css'
+
+const product = products[0];
+const saleProducts = products.slice(0, 2);
+const newProducts = products.slice(6);
+const featured = [...saleProducts, ...newProducts];
+const baseStyle = { borderRadius: 12 };
+const highlight = { border: '2px solid gold' };
 
 const students = [
   {
@@ -112,6 +123,43 @@ function App() {
             </h2>
 
             <ProductList products={products} />
+
+            <hr className="my-5" />
+
+            <h2 className="mb-3">Bài 6 - Component dùng lại và spread</h2>
+
+            <div className="d-flex flex-wrap justify-content-center gap-2 mb-4">
+              <AppButton>Button mặc định</AppButton>
+              <AppButton variant="danger" size="sm">Button nhỏ</AppButton>
+              <AppButton disabled>Button bị khóa</AppButton>
+            </div>
+
+            <Form className="text-start mb-4">
+              <InputField
+                id="contactEmail"
+                label="Email"
+                type="email"
+                placeholder="name@example.com"
+                required
+                helpText="Chúng tôi không chia sẻ email của bạn"
+              />
+            </Form>
+
+            <Card style={{ ...baseStyle, ...highlight }} className="mb-4 text-start">
+              <Card.Body>
+                <Card.Title>Sản phẩm nổi bật</Card.Title>
+                <Card.Text>
+                  {product.name} được truyền với discount mới là 30%, còn dữ liệu gốc vẫn là {product.discount}%.
+                </Card.Text>
+              </Card.Body>
+            </Card>
+
+            <div className="mb-4">
+              <ProductCard product={{ ...product, discount: 30 }} />
+            </div>
+
+            <h3 className="mb-3">Featured ({featured.length} sản phẩm)</h3>
+            <ProductList products={featured} />
 
             </div>
   )
