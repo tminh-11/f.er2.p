@@ -1,11 +1,14 @@
-import WelcomeCard from './components/WelcomeCard';
-import StudentCard from './components/StudentCard';
-import ProductCard from './components/ProductCard';
-import ProductList from './components/ProductList';
-import CartTable from './components/CartTable';
-import RegisterForm from './components/RegisterForm';
-import AppButton from './components/AppButton';
-import InputField from './components/InputField';
+import {
+  AppButton,
+  CartTable,
+  InputField,
+  Layout,
+  ProductCard,
+  ProductList,
+  RegisterForm,
+  StudentCard,
+  WelcomeCard,
+} from './components';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
@@ -86,7 +89,7 @@ const productsBai3 = [
 
 function App() {
   return (
-        <div className="container my-4">
+  <Layout title="Cửa hàng">
 
             {/* BÀI 1 */}
             <h2 className="d-flex flex-wrap justify-content-center gap-4 mb-3">
@@ -174,7 +177,7 @@ function App() {
             <h2 className="mb-3">Bài 8 - Form đăng ký</h2>
             <RegisterForm />
 
-            </div>
+        </Layout>
   )
 }
 
