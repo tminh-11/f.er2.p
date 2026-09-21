@@ -1,8 +1,10 @@
 import WelcomeCard from './components/WelcomeCard';
 import StudentCard from './components/StudentCard';
 import ProductCard from './components/ProductCard';
+import ProductList from './components/ProductList';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
+import { products } from './data/products';
 import './App.css'
 
 const students = [
@@ -41,7 +43,7 @@ const students = [
   }
 ];
 
-const products = [
+const productsBai3 = [
   {
     id: 1,
     name: 'Tai nghe Bluetooth',
@@ -96,12 +98,20 @@ function App() {
             </h2>
 
             <Row className="g-4">
-              {products.map((product) => (
+              {productsBai3.map((product) => (
                 <Col md={4} key={product.id}>
                   <ProductCard product={product} />
                 </Col>
               ))}
             </Row>
+
+            <hr className="my-5" />
+
+            <h2 className="mb-3">
+              Bài 4 - Lưới sản phẩm
+            </h2>
+
+            <ProductList products={products} />
 
             </div>
   )
