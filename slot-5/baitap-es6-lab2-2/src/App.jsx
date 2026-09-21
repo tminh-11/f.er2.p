@@ -3,6 +3,7 @@ import StudentCard from './components/StudentCard';
 import ProductCard from './components/ProductCard';
 import ProductList from './components/ProductList';
 import CartTable from './components/CartTable';
+import RegisterForm from './components/RegisterForm';
 import AppButton from './components/AppButton';
 import InputField from './components/InputField';
 import Card from 'react-bootstrap/Card';
@@ -167,6 +168,11 @@ function App() {
 
             <h2 className="mb-3">Bài 7 - Giỏ hàng</h2>
             <CartTable cartItems={cartItems} products={products} />
+
+            <hr className="my-5" />
+
+            <h2 className="mb-3">Bài 8 - Form đăng ký</h2>
+            <RegisterForm />
 
             </div>
   )
