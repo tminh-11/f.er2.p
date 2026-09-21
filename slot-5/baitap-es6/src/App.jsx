@@ -1,5 +1,8 @@
 import WelcomeCard from './components/WelcomeCard';
 import StudentCard from './components/StudentCard';
+import ProductCard from './components/ProductCard';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 import './App.css'
 
 const students = [
@@ -38,6 +41,33 @@ const students = [
   }
 ];
 
+const products = [
+  {
+    id: 1,
+    name: 'Tai nghe Bluetooth',
+    price: 590000,
+    image: 'https://picsum.photos/seed/headphone/300/200',
+    rating: { rate: 4.5, count: 120 },
+    category: { name: 'Âm thanh' },
+  },
+  {
+    id: 2,
+    name: 'Chuột không dây',
+    price: 0,
+    image: 'https://picsum.photos/seed/mouse/300/200',
+    rating: { rate: 4.2, count: 86 },
+    category: { name: 'Phụ kiện máy tính' },
+  },
+  {
+    id: 3,
+    name: 'Bàn phím cơ',
+    price: 1290000,
+    image: 'https://picsum.photos/seed/keyboard/300/200',
+    rating: { rate: 4.8, count: 64 },
+    category: { name: 'Phụ kiện máy tính' },
+  },
+];
+
 function App() {
   return (
         <div className="container my-4">
@@ -60,6 +90,19 @@ function App() {
             </div>
 
             <hr className="my-5" />
+
+            <h2 className="mb-3">
+              Bài 3 - ProductCard
+            </h2>
+
+            <Row className="g-4">
+              {products.map((product) => (
+                <Col md={4} key={product.id}>
+                  <ProductCard product={product} />
+                </Col>
+              ))}
+            </Row>
+
             </div>
   )
 }
