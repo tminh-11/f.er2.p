@@ -4,7 +4,15 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Row from 'react-bootstrap/Row';
-import { AppButton, InputField, ProductList } from '../components';
+import { useState } from 'react';
+import {
+	AppButton,
+	CartTable,
+	InputField,
+	ProductList,
+	RegisterForm,
+} from '../components';
+import { cartItems } from '../data/cart';
 import { APP_NAME } from '../data/menu';
 import { products } from '../data/products';
 
@@ -14,6 +22,10 @@ const formatVND = (value) => value.toLocaleString('vi-VN', {
 });
 
 const HomePage = () => {
+	const [searchTerm, setSearchTerm] = useState('');
+	const [selectedCategory, setSelectedCategory] = useState('');
+	const [newsletterMessage, setNewsletterMessage] = useState('');
+
 	// ES6: filter tạo danh sách sản phẩm đang giảm giá.
 	const onSale = products.filter(({ discount }) => discount > 0);
 	// ES6: spread tạo bản sao trước khi sort để không đổi mảng gốc.
@@ -34,9 +46,15 @@ const HomePage = () => {
 		{ label: 'Còn hàng', value: inStockCount },
 		{ label: 'Giá trung bình', value: formatVND(avgPrice) },
 	];
+	const filteredProducts = products.filter(({ name, category }) => {
+		const matchesName = name.toLowerCase().includes(searchTerm.toLowerCase());
+		const matchesCategory = !selectedCategory || category.name === selectedCategory;
+
+		return matchesName && matchesCategory;
+	});
 
 	return (
-		<div>
+		<div id="home">
 			{/* Khối 1: Hero */}
 			<Card bg="primary" text="white" className="mb-4">
 				<Card.Body>
@@ -60,18 +78,28 @@ const HomePage = () => {
 			</Row>
 
 			{/* Khối 3: Bộ lọc giao diện */}
-			<Card className="mb-5">
+			<Card className="mb-5" id="products">
 				<Card.Body>
-					<InputGroup>
-						<Form.Control placeholder="Tìm sản phẩm..." />
-						<Form.Select aria-label="Chọn danh mục">
+					<Form onSubmit={(event) => event.preventDefault()}>
+						<InputGroup>
+							<Form.Control
+								value={searchTerm}
+								onChange={(event) => setSearchTerm(event.target.value)}
+								placeholder="Tìm sản phẩm..."
+							/>
+							<Form.Select
+								value={selectedCategory}
+								onChange={(event) => setSelectedCategory(event.target.value)}
+								aria-label="Chọn danh mục"
+							>
 							<option value="">Tất cả danh mục</option>
 							{categories.map((category) => (
 								<option key={category} value={category}>{category}</option>
 							))}
-						</Form.Select>
-						<AppButton>Tìm</AppButton>
-					</InputGroup>
+							</Form.Select>
+							<AppButton type="submit">Tìm</AppButton>
+						</InputGroup>
+					</Form>
 				</Card.Body>
 			</Card>
 
@@ -84,18 +112,31 @@ const HomePage = () => {
 			{/* Khối 5: Tất cả sản phẩm */}
 			<section className="mb-5">
 				<h2>Tất cả sản phẩm</h2>
-				{products.length === 0 ? (
+				{filteredProducts.length === 0 ? (
 					<Alert variant="info">Chưa có sản phẩm</Alert>
 				) : (
-					<ProductList products={products} />
+					<ProductList products={filteredProducts} />
 				)}
+			</section>
+
+			<section id="cart" className="mb-5">
+				<h2>Giỏ hàng</h2>
+				<CartTable cartItems={cartItems} products={products} />
+			</section>
+
+			<section id="register" className="mb-5">
+				<h2>Đăng ký</h2>
+				<RegisterForm />
 			</section>
 
 			{/* Khối 6: Nhận tin */}
 			<Card className="mb-4">
 				<Card.Body>
 					<Card.Title>Nhận tin mới nhất</Card.Title>
-					<Form onSubmit={(event) => event.preventDefault()}>
+					<Form onSubmit={(event) => {
+						event.preventDefault();
+						setNewsletterMessage('Đăng ký nhận tin thành công!');
+					}}>
 						<InputField
 							id="newsletterEmail"
 							label="Email"
@@ -104,6 +145,11 @@ const HomePage = () => {
 							required
 						/>
 						<AppButton type="submit">Đăng ký</AppButton>
+						{newsletterMessage && (
+							<Alert variant="success" className="mt-3 mb-0">
+								{newsletterMessage}
+							</Alert>
+						)}
 					</Form>
 				</Card.Body>
 			</Card>
