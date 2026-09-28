@@ -2,6 +2,7 @@ import FaqAccordion from './components/FaqAccordion.jsx'
 import ReviewForm from './components/ReviewForm.jsx'
 import BmiCalculator from './components/BmiCalculator.jsx'
 import StudentManager from './components/StudentManager.jsx'
+import QuizApp from './components/QuizApp.jsx'
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <ReviewForm />
       <BmiCalculator />
       <StudentManager />
+      <QuizApp />
     </>
   )
 }
