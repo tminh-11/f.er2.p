@@ -4,7 +4,7 @@ function Counter() {
   const [count, setCount] = useState(0)
 
   return (
-    <main id="center">
+    <main className="exercise">
       <h1>Simple Counter</h1>
       <p>Current count: {count}</p>
       <button
