@@ -411,3 +411,147 @@ input {
     padding: 18px;
   }
 }
+
+.bmi-page {
+  min-height: 100vh;
+  padding: 64px 24px 80px;
+  background:
+    radial-gradient(ellipse at 14% 8%, rgba(115, 172, 153, 0.16), transparent 35%),
+    linear-gradient(140deg, #edf4f1, #f7f8f3 58%, #eef2e8);
+}
+
+.bmi-shell {
+  width: min(100%, 760px);
+  margin: 0 auto;
+}
+
+.bmi-eyebrow {
+  margin-bottom: 14px;
+  color: #397466;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.bmi-heading-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 28px;
+}
+
+.bmi-heading-row h2 {
+  margin: 0;
+  color: #203c35;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 38px;
+  font-weight: 500;
+  line-height: 1.15;
+}
+
+.bmi-intro {
+  margin: 9px 0 0;
+  color: #657770;
+  font-size: 15px;
+}
+
+.bmi-standard {
+  flex: 0 0 auto;
+  padding: 7px 10px;
+  border: 1px solid #ccdad2;
+  border-radius: 4px;
+  color: #46695e;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.bmi-fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.bmi-fields .form-label {
+  color: #354d45;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.bmi-label-row {
+  display: flex;
+  min-height: 32px;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.bmi-label-row .form-label {
+  padding-top: 5px;
+}
+
+.bmi-label-row .btn-group .btn {
+  min-width: 44px;
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+.bmi-fields .form-control {
+  min-height: 44px;
+  border-color: #cfdbd4;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.bmi-fields .form-control:focus {
+  border-color: #4c8a76;
+  box-shadow: 0 0 0 0.2rem rgba(76, 138, 118, 0.16);
+}
+
+.bmi-fields .invalid-feedback {
+  font-size: 12px;
+}
+
+.bmi-help {
+  margin: 14px 0 0;
+  color: #75847d;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.bmi-result {
+  margin: 24px 0 0;
+  border-radius: 4px;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.bmi-prompt {
+  margin-top: 24px;
+  padding: 16px 18px;
+  border-left: 3px solid #8baa9d;
+  background: rgba(255, 255, 255, 0.58);
+  color: #667770;
+  font-size: 14px;
+}
+
+@media (max-width: 560px) {
+  .bmi-page {
+    padding: 48px 18px 64px;
+  }
+
+  .bmi-heading-row {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .bmi-heading-row h2 {
+    font-size: 32px;
+  }
+
+  .bmi-fields {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+  }
+}
