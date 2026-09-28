@@ -17,6 +17,44 @@
   }
 }
 
+.text-input {
+  box-sizing: border-box;
+  width: min(320px, 100%);
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--text-h);
+  background: var(--bg);
+
+  &:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+}
+
+.text-preview,
+.text-stats {
+  overflow-wrap: anywhere;
+}
+
+.text-stats {
+  color: var(--text);
+}
+
+.input-clear {
+  padding: 5px 10px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--text-h);
+  background: var(--bg);
+  cursor: pointer;
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}
+
 .hero {
   position: relative;
 
