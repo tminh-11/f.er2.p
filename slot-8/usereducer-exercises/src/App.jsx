@@ -1,8 +1,7 @@
-import './App.css'
-import StepCounter from './component/StepCounter'
+import ExerciseApp from './homepage/ExerciseApp'
 
 function App() {
-  return <StepCounter />
+  return <ExerciseApp />
 }
 
 export default App
