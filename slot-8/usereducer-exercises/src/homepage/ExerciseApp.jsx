@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import ExerciseNavbar from '../component/ExerciseNavbar'
 import KanbanBoard from '../component/KanbanBoard'
+import CourseWizard from '../component/CourseWizard'
 import OrderTracker from '../component/OrderTracker'
 import StepCounter from '../component/StepCounter'
 
@@ -21,6 +22,9 @@ function ExerciseApp() {
       </div>
       <div hidden={activeExercise !== 'kanban'}>
         <KanbanBoard />
+      </div>
+      <div hidden={activeExercise !== 'wizard'}>
+        <CourseWizard />
       </div>
     </div>
   )
