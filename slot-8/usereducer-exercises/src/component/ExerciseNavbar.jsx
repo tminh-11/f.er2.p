@@ -19,6 +19,9 @@ function ExerciseNavbar({ activeExercise, onSelect }) {
             <Nav.Link as="button" type="button" eventKey="orders">
               Bài 2 · Đơn hàng
             </Nav.Link>
+            <Nav.Link as="button" type="button" eventKey="kanban">
+              Bài 3 · Kanban
+            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
