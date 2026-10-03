@@ -25,6 +25,9 @@ function ExerciseNavbar({ activeExercise, onSelect }) {
             <Nav.Link as="button" type="button" eventKey="wizard">
               Bài 4 · Đăng ký
             </Nav.Link>
+            <Nav.Link as="button" type="button" eventKey="notes">
+              Bài 5 · Ghi chú
+            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
