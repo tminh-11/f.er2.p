@@ -3,6 +3,7 @@ import MiniCart from './components/MiniCart'
 import ProfilePreview from './components/ProfilePreview'
 import ProductFilter from './components/ProductFilter'
 import RegisterForm from './components/RegisterForm'
+import ValidatedRegisterForm from './components/ValidatedRegisterForm'
 import { products } from './data/products'
 import './App.css'
 
@@ -18,6 +19,7 @@ function App() {
       <ProfilePreview />
       <ProductFilter products={products} />
       <RegisterForm />
+      <ValidatedRegisterForm />
     </main>
   )
 }
