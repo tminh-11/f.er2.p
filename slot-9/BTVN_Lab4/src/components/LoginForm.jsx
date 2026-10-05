@@ -71,7 +71,7 @@ function LoginForm({ onLoginSuccess }) {
       type: LOGIN_ACTIONS.LOGIN_SUCCESS,
       payload: `Xin chào ${email}!`,
     })
-    onLoginSuccess?.({ ...values, email })
+    onLoginSuccess?.(email)
   }
 
   function handleChange(event) {

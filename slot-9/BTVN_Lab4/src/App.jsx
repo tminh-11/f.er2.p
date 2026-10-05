@@ -1,32 +1,18 @@
-import QuantityPicker from './components/QuantityPicker'
-import MiniCart from './components/MiniCart'
-import ProfilePreview from './components/ProfilePreview'
-import ProductFilter from './components/ProductFilter'
-import RegisterForm from './components/RegisterForm'
-import ValidatedRegisterForm from './components/ValidatedRegisterForm'
-import TodoList from './components/TodoList'
-import CartDemoPage from './pages/CartDemoPage'
-import LoginForm from './components/LoginForm'
-import { products } from './data/products'
+import Layout from './components/Layout'
+import { AuthProvider } from './context/AuthContext'
+import { ThemeProvider } from './context/ThemeContext'
+import HomeContent from './pages/HomeContent'
 import './App.css'
 
 function App() {
   return (
-    <main className="app">
-      <h1>Bộ chọn số lượng</h1>
-      <div className="picker-list">
-        <QuantityPicker title="Bộ chọn mặc định" />
-        <QuantityPicker title="Bộ chọn từ 2 đến 5" min={2} max={5} />
-      </div>
-      <MiniCart />
-      <ProfilePreview />
-      <ProductFilter products={products} />
-      <RegisterForm />
-      <ValidatedRegisterForm />
-      <TodoList />
-      <CartDemoPage />
-      <LoginForm />
-    </main>
+    <ThemeProvider>
+      <AuthProvider>
+        <Layout>
+          <HomeContent />
+        </Layout>
+      </AuthProvider>
+    </ThemeProvider>
   )
 }
 
