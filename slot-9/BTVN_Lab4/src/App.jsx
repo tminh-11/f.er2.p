@@ -2,6 +2,7 @@ import QuantityPicker from './components/QuantityPicker'
 import MiniCart from './components/MiniCart'
 import ProfilePreview from './components/ProfilePreview'
 import ProductFilter from './components/ProductFilter'
+import RegisterForm from './components/RegisterForm'
 import { products } from './data/products'
 import './App.css'
 
@@ -16,6 +17,7 @@ function App() {
       <MiniCart />
       <ProfilePreview />
       <ProductFilter products={products} />
+      <RegisterForm />
     </main>
   )
 }
