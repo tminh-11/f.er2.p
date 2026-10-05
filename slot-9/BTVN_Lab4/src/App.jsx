@@ -4,6 +4,7 @@ import ProfilePreview from './components/ProfilePreview'
 import ProductFilter from './components/ProductFilter'
 import RegisterForm from './components/RegisterForm'
 import ValidatedRegisterForm from './components/ValidatedRegisterForm'
+import TodoList from './components/TodoList'
 import { products } from './data/products'
 import './App.css'
 
@@ -20,6 +21,7 @@ function App() {
       <ProductFilter products={products} />
       <RegisterForm />
       <ValidatedRegisterForm />
+      <TodoList />
     </main>
   )
 }
