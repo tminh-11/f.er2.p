@@ -6,6 +6,7 @@ import RegisterForm from './components/RegisterForm'
 import ValidatedRegisterForm from './components/ValidatedRegisterForm'
 import TodoList from './components/TodoList'
 import CartDemoPage from './pages/CartDemoPage'
+import LoginForm from './components/LoginForm'
 import { products } from './data/products'
 import './App.css'
 
@@ -24,6 +25,7 @@ function App() {
       <ValidatedRegisterForm />
       <TodoList />
       <CartDemoPage />
+      <LoginForm />
     </main>
   )
 }
