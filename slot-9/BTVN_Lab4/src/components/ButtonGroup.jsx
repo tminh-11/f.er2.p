@@ -1,6 +1,10 @@
-function ButtonGroup({ children, label }) {
+function ButtonGroup({ children, label, size }) {
   return (
-    <div className="button-group" role="group" aria-label={label}>
+    <div
+      className={`button-group${size ? ` button-group--${size}` : ''}`}
+      role="group"
+      aria-label={label}
+    >
       {children}
     </div>
   )

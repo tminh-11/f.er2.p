@@ -1,4 +1,5 @@
 import QuantityPicker from './components/QuantityPicker'
+import MiniCart from './components/MiniCart'
 import './App.css'
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
         <QuantityPicker title="Bộ chọn mặc định" />
         <QuantityPicker title="Bộ chọn từ 2 đến 5" min={2} max={5} />
       </div>
+      <MiniCart />
     </main>
   )
 }
