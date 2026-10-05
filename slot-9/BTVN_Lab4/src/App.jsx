@@ -1,6 +1,8 @@
 import QuantityPicker from './components/QuantityPicker'
 import MiniCart from './components/MiniCart'
 import ProfilePreview from './components/ProfilePreview'
+import ProductFilter from './components/ProductFilter'
+import { products } from './data/products'
 import './App.css'
 
 function App() {
@@ -13,6 +15,7 @@ function App() {
       </div>
       <MiniCart />
       <ProfilePreview />
+      <ProductFilter products={products} />
     </main>
   )
 }

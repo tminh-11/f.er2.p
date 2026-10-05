@@ -4,6 +4,7 @@ function Button({
   disabled = false,
   variant = 'default',
   'aria-label': ariaLabel,
+  'aria-pressed': ariaPressed,
 }) {
   return (
     <button
@@ -12,6 +13,7 @@ function Button({
       onClick={onClick}
       disabled={disabled}
       aria-label={ariaLabel}
+      aria-pressed={ariaPressed}
     >
       {children}
     </button>
