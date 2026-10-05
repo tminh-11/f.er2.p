@@ -1,7 +1,7 @@
 import Header from './Header'
 import { useTheme } from '../context/useTheme'
 
-function Layout({ children }) {
+function Layout({ children, currentPage, onNavigate }) {
   const { theme } = useTheme()
 
   return (
@@ -9,7 +9,7 @@ function Layout({ children }) {
       className="app-layout bg-body text-body min-vh-100"
       data-bs-theme={theme}
     >
-      <Header />
+      <Header currentPage={currentPage} onNavigate={onNavigate} />
       {children}
     </div>
   )

@@ -1,16 +1,16 @@
-import Layout from './components/Layout'
+import AppContent from './pages/AppContent'
 import { AuthProvider } from './context/AuthContext'
 import { ThemeProvider } from './context/ThemeContext'
-import HomeContent from './pages/HomeContent'
+import { CartProvider } from './context/CartContext'
 import './App.css'
 
 function App() {
   return (
     <ThemeProvider>
       <AuthProvider>
-        <Layout>
-          <HomeContent />
-        </Layout>
+        <CartProvider>
+          <AppContent />
+        </CartProvider>
       </AuthProvider>
     </ThemeProvider>
   )
