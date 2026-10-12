@@ -14,13 +14,16 @@ function MainLayout() {
       <Navbar expand="lg" className="library-navbar" variant="dark">
         <Container>
           <Navbar.Brand as={Link} to="/" className="library-brand">
-            Thư viện FPT
+            FPT University
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="library-navigation" />
           <Navbar.Collapse id="library-navigation">
             <Nav className="ms-auto">
               <Nav.Link as={NavLink} to="/" end>
-                Trang chủ
+                Sự kiện
+              </Nav.Link>
+              <Nav.Link as={NavLink} to="/library">
+                Thư viện
               </Nav.Link>
               <Nav.Link as={NavLink} to="/books">
                 Sách
