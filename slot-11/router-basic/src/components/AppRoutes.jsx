@@ -12,14 +12,20 @@ import LibraryHomePage from './LibraryHomePage.jsx'
 import MainLayout from './MainLayout.jsx'
 import RulesPage from './RulesPage.jsx'
 import HomePage from './HomePage.jsx'
+import EventPage from './EventPage.jsx'
+import RegisterPage from './RegisterPage.jsx'
+import SuccessPage from './SuccessPage.jsx'
 import '../App.css'
 
 function AppRoutes() {
   return (
     <Routes>
       <Route path="/" element={<MainLayout />}>
-        <Route index element={<LibraryHomePage />} />
+        <Route index element={<EventPage />} />
+        <Route path="library" element={<LibraryHomePage />} />
         <Route path="books" element={<BookListPage />} />
+        <Route path="register" element={<RegisterPage />} />
+        <Route path="success" element={<SuccessPage />} />
         <Route path="portfolio" element={<HomePage />} />
         <Route path="help" element={<HelpLayout />}>
           <Route index element={<Navigate to="faq" replace />} />
