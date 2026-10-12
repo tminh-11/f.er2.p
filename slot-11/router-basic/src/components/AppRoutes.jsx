@@ -15,13 +15,15 @@ import HomePage from './HomePage.jsx'
 import EventPage from './EventPage.jsx'
 import RegisterPage from './RegisterPage.jsx'
 import SuccessPage from './SuccessPage.jsx'
+import StudentDirectoryPage from './StudentDirectoryPage.jsx'
 import '../App.css'
 
 function AppRoutes() {
   return (
     <Routes>
       <Route path="/" element={<MainLayout />}>
-        <Route index element={<EventPage />} />
+        <Route index element={<StudentDirectoryPage />} />
+        <Route path="event" element={<EventPage />} />
         <Route path="library" element={<LibraryHomePage />} />
         <Route path="books" element={<BookListPage />} />
         <Route path="register" element={<RegisterPage />} />
