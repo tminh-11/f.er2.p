@@ -2,6 +2,218 @@
   min-height: 100vh;
 }
 
+.library-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  color: #1b3029;
+  background: #f7f8f4;
+}
+
+.library-navbar {
+  min-height: 76px;
+  background: #13231f;
+}
+
+.library-brand {
+  color: #f4f3ee;
+  font-weight: 700;
+}
+
+.library-navbar .nav-link {
+  color: #c8d1cb;
+}
+
+.library-navbar .nav-link:hover,
+.library-navbar .nav-link.active {
+  color: #fff;
+}
+
+.library-main {
+  flex: 1;
+}
+
+.library-page {
+  min-height: 100%;
+  padding: 4rem 0;
+}
+
+.library-home {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.library-page .section-title {
+  max-width: 800px;
+}
+
+.library-page .section-intro {
+  margin-bottom: 2rem;
+}
+
+.library-footer {
+  padding: 1.5rem 0;
+  color: #c8d1cb;
+  background: #13231f;
+}
+
+.help-tabs {
+  margin-top: 2rem;
+}
+
+.help-tabs .nav-link {
+  color: #49674d;
+}
+
+.help-tabs .nav-link.active {
+  color: #1b3029;
+}
+
+.help-content {
+  padding: 2rem 0;
+  color: #526159;
+  line-height: 1.8;
+}
+
+.help-content h2 {
+  color: #1b3029;
+  font-size: 1.5rem;
+}
+
+.event-section,
+.form-section {
+  display: flex;
+  min-height: 100%;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 0;
+}
+
+.event-container {
+  max-width: 850px;
+}
+
+.event-card,
+.registration-card {
+  border: 1px solid #e1e7de;
+  border-radius: 1rem;
+  background: #fff;
+  box-shadow: 0 1rem 3rem rgb(27 48 41 / 7%);
+}
+
+.event-card .card-body {
+  padding: clamp(1.75rem, 6vw, 4rem);
+}
+
+.event-date {
+  margin-bottom: 1rem;
+  color: #739a78;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.event-card .section-intro {
+  margin-top: 1.25rem;
+}
+
+.registration-card {
+  width: min(100% - 2rem, 600px);
+  padding: clamp(1.5rem, 5vw, 3rem);
+}
+
+.registration-card .section-title {
+  font-size: clamp(2.25rem, 6vw, 3.5rem);
+}
+
+.registration-card .section-intro {
+  margin-bottom: 1.75rem;
+}
+
+.registration-card .form-label {
+  color: #1b3029;
+  font-weight: 600;
+}
+
+.registration-card .form-control,
+.registration-card .form-select {
+  min-height: 3rem;
+  border-color: #d7e0d5;
+}
+
+.registration-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.secondary-button {
+  padding: 0.85rem 1.25rem;
+  border: 1px solid #d7e0d5;
+  border-radius: 999px;
+  color: #1b3029;
+  background: #fff;
+  font-weight: 600;
+}
+
+.secondary-button:hover,
+.secondary-button:focus {
+  border-color: #a6c8a1;
+  color: #1b3029;
+  background: #edf3e9;
+}
+
+.session-confirmation {
+  margin-bottom: 2rem;
+  color: #526159;
+}
+
+.student-filters {
+  display: flex;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.student-search {
+  flex: 1 1 18rem;
+}
+
+.student-class-filter {
+  flex: 0 1 14rem;
+}
+
+.student-filters .form-label {
+  color: #1b3029;
+  font-weight: 600;
+}
+
+.student-filters .form-control,
+.student-filters .form-select {
+  min-height: 3rem;
+  border-color: #d7e0d5;
+}
+
+.clear-student-filters {
+  min-height: 3rem;
+}
+
+.student-result-count {
+  margin-bottom: 0.75rem;
+  color: #526159;
+  font-weight: 600;
+}
+
+.empty-students {
+  padding: 2rem !important;
+  color: #78847b !important;
+  text-align: center;
+}
+
 .site-navbar {
   min-height: 76px;
   background: #13231f;
@@ -235,6 +447,94 @@
   color: #49674d;
   background: #edf3e9;
   font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.course-table-wrap {
+  overflow: hidden;
+  border: 1px solid #e1e7de;
+  border-radius: 0.9rem;
+  background: #fff;
+}
+
+.course-table thead th {
+  padding: 1rem 1.25rem;
+  border-bottom-color: #e1e7de;
+  color: #49674d;
+  background: #edf3e9;
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.course-table tbody td {
+  padding: 1rem 1.25rem;
+  color: #526159;
+}
+
+.course-code-link {
+  color: #496f4c;
+  font-weight: 700;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.course-detail-card {
+  max-width: 760px;
+  border: 1px solid #e1e7de;
+  border-radius: 0.9rem;
+}
+
+.course-detail-card .card-body {
+  padding: clamp(1.5rem, 5vw, 3rem);
+}
+
+.course-detail-code {
+  margin-bottom: 0.8rem;
+  color: #739a78;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.course-detail-card .section-title {
+  font-size: clamp(2rem, 5vw, 3.25rem);
+}
+
+.course-facts {
+  display: flex;
+  gap: 2.5rem;
+  margin: 1.75rem 0;
+}
+
+.course-facts div,
+.course-facts span,
+.course-facts strong {
+  display: block;
+}
+
+.course-facts span {
+  margin-bottom: 0.25rem;
+  color: #78847b;
+  font-size: 0.9rem;
+}
+
+.course-facts strong {
+  color: #1b3029;
+}
+
+.course-description {
+  max-width: 620px;
+  color: #66746b;
+  line-height: 1.8;
+}
+
+.course-back-link {
+  margin-top: 1rem;
+}
+
+.course-error {
+  max-width: 760px;
   font-weight: 600;
 }
 
