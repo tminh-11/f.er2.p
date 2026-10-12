@@ -20,6 +20,9 @@ function MainLayout() {
           <Navbar.Collapse id="library-navigation">
             <Nav className="ms-auto">
               <Nav.Link as={NavLink} to="/" end>
+                Sinh viên
+              </Nav.Link>
+              <Nav.Link as={NavLink} to="/event">
                 Sự kiện
               </Nav.Link>
               <Nav.Link as={NavLink} to="/library">
