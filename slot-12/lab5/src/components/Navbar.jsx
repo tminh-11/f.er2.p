@@ -9,7 +9,7 @@ const pages = [
 
 function Navbar() {
   return (
-    <nav className="navbar navbar-expand bg-light">
+    <nav className="navbar navbar-expand site-navbar">
       <div className="container">
         <div className="navbar-nav">
           {pages.map(({ label, path }) => (
