@@ -5,6 +5,7 @@ const pages = [
   { label: 'About', path: '/about' },
   { label: 'New', path: '/new' },
   { label: 'Contact', path: '/contact' },
+  { label: 'Sản phẩm', path: '/products' },
 ]
 
 function Navbar() {
