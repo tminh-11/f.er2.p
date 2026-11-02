@@ -12,19 +12,10 @@ import NotFoundPage from './NotFoundPage';
 import { formatVND, getFinalPrice } from '../utils/format';
 
 /**
- * ===================== CarDetailPage (/cars/:id) – TODO-08 (1.0) · TODO-09 (1.0) =====================
+ * ================================= CarDetailPage (/cars/:id) =================================
  * ĐÃ CÓ SẴN: kiểm tra id không phải số, useEffect tải xe, document.title, state car/loading/error/quantity,
  *            ảnh + tên <h2>, QuantityPicker, biến outOfStock, khung hàm handleAdd.
- * Kiểm tra: /cars/9, /cars/3, /cars/9999.
- *
- * TODO-08  loading → return <Loading />; error → return <ErrorAlert message={error} /> + <Link to="/cars">← Về danh sách xe</Link>;
- *          có dữ liệu: <Badge bg="info">{car.brand?.name}</Badge>, "Đời {car.year} · {car.fuel}",
- *          giá sau giảm (className "text-danger fw-bold fs-3"), mô tả <p>{car.description}</p>.
- * TODO-09  Tình trạng: <Badge bg="success">Còn {stock} xe</Badge> / <Badge bg="secondary">Hết xe</Badge>;
- *          nút "Thêm vào giỏ" (disabled={outOfStock}, onClick={handleAdd});
- *          thân handleAdd: addToCart(car, quantity) + showToast(`Đã thêm ${quantity} "${car.name}" vào giỏ`);
- *          nút "← Quay lại" gọi navigate(-1).
- * ========================================================================================================
+ * ===============================================================================================
  */
 export default function CarDetailPage() {
   const { id } = useParams();
@@ -63,13 +54,22 @@ function CarDetail({ id }) {
     if (car) document.title = `${car.name} | AutoShop Mini`;
   }, [car]);
 
-  // TODO-08: loading → <Loading />; error → <ErrorAlert> + Link "← Về danh sách xe"
-  if (!car) return null; // (giữ dòng này để trang không lỗi khi chưa có dữ liệu)
+  if (loading) return <Loading />;
+  if (error) {
+    return (
+      <>
+        <ErrorAlert message={error} />
+        <Link to="/cars">← Về danh sách xe</Link>
+      </>
+    );
+  }
+  if (!car) return null;
 
   const outOfStock = car.stock === 0;
 
   const handleAdd = () => {
-    // TODO-09: addToCart(car, quantity) + showToast(...)
+    addToCart(car, quantity);
+    showToast(`Đã thêm ${quantity} "${car.name}" vào giỏ`);
   };
 
   return (
@@ -79,18 +79,34 @@ function CarDetail({ id }) {
       </Col>
       <Col md={7}>
         <h2 className="fw-bold">{car.name}</h2>
-        {/* TODO-08: Badge hãng xe + "Đời {year} · {fuel}" */}
+        <div className="d-flex flex-wrap gap-2 align-items-center">
+          {car.brand?.name && <Badge bg="info">{car.brand.name}</Badge>}
+          <span>Đời {car.year} · {car.fuel}</span>
+        </div>
 
-        <div className="my-3">{/* TODO-08: giá sau giảm (text-danger fw-bold fs-3) */}</div>
+        <div className="my-3">
+          <span className="text-danger fw-bold fs-3">{formatVND(getFinalPrice(car))}</span>
+        </div>
 
-        {/* TODO-08: mô tả <p>{car.description}</p> */}
+        <p>{car.description}</p>
 
-        <p>Tình trạng: {/* TODO-09: Badge còn xe / hết xe */}</p>
+        <p>
+          Tình trạng:{' '}
+          {outOfStock ? (
+            <Badge bg="secondary">Hết xe</Badge>
+          ) : (
+            <Badge bg="success">Còn {car.stock} xe</Badge>
+          )}
+        </p>
 
         <div className="d-flex flex-wrap gap-2 align-items-center">
           <QuantityPicker min={1} max={Math.max(1, Math.min(10, car.stock))} onChange={setQuantity} />
-          {/* TODO-09: nút "Thêm vào giỏ" (disabled={outOfStock}, onClick={handleAdd}) */}
-          {/* TODO-09: nút "← Quay lại" */}
+          <Button disabled={outOfStock} onClick={handleAdd}>
+            Thêm vào giỏ
+          </Button>
+          <Button variant="outline-secondary" onClick={() => navigate(-1)}>
+            ← Quay lại
+          </Button>
         </div>
       </Col>
     </Row>
