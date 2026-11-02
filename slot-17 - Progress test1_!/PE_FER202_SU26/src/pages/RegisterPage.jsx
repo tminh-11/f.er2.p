@@ -7,20 +7,10 @@ import { useToast } from '../context/ToastContext';
 import { EMPTY_REGISTER, validateRegister } from '../utils/validation';
 
 /**
- * ===================== RegisterPage (/register) – TODO-12 (1.0) =====================
+ * ============================= RegisterPage (/register) =============================
  * ĐÃ CÓ SẴN: state, errors = validateRegister(values), errorCount, handleChange, handleBlur, showError,
  *            ô "Họ tên" (MẪU), ô Số điện thoại, ô Nhập lại mật khẩu, checkbox điều khoản,
  *            Alert serverError, dòng "Còn x mục chưa hợp lệ", nút "Đăng ký" (có Spinner), link "Đăng nhập".
- *
- * TODO-12  1. Làm TƯƠNG TỰ ô Họ tên cho 2 ô:
- *             Email    (controlId "register-email",    name "email",    type "email")
- *             Mật khẩu (controlId "register-password", name "password", type "password")
- *          2. Viết thân handleSubmit:
- *             setSubmitted(true); errorCount > 0 → return (KHÔNG gọi API); setSubmitting(true);
- *             try   → await userApi.register({ fullName, email, phone, password }) (đã trim)
- *                     → showToast('Đăng ký thành công, vui lòng đăng nhập')
- *                     → navigate('/login', { state: { email } });
- *             catch → setServerError(err.message);  finally → setSubmitting(false).
  * =====================================================================================
  */
 export default function RegisterPage() {
@@ -50,7 +40,25 @@ export default function RegisterPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // TODO-12: setSubmitted(true); errorCount > 0 → return; gọi userApi.register(...) trong try/catch/finally
+    setSubmitted(true);
+    if (errorCount > 0) return;
+
+    setSubmitting(true);
+    try {
+      const email = values.email.trim();
+      await userApi.register({
+        fullName: values.fullName.trim(),
+        email,
+        phone: values.phone.trim(),
+        password: values.password,
+      });
+      showToast('Đăng ký thành công, vui lòng đăng nhập');
+      navigate('/login', { state: { email } });
+    } catch (err) {
+      setServerError(err.message);
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -76,7 +84,18 @@ export default function RegisterPage() {
                 <Form.Control.Feedback type="invalid">{showError('fullName')}</Form.Control.Feedback>
               </Form.Group>
 
-              {/* TODO-12: ô Email (register-email) – làm tương tự ô Họ tên */}
+              <Form.Group className="mb-3" controlId="register-email">
+                <Form.Label>Email *</Form.Label>
+                <Form.Control
+                  type="email"
+                  name="email"
+                  value={values.email}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  isInvalid={Boolean(showError('email'))}
+                />
+                <Form.Control.Feedback type="invalid">{showError('email')}</Form.Control.Feedback>
+              </Form.Group>
 
               <Form.Group className="mb-3" controlId="register-phone">
                 <Form.Label>Số điện thoại</Form.Label>
@@ -92,7 +111,18 @@ export default function RegisterPage() {
                 <Form.Control.Feedback type="invalid">{showError('phone')}</Form.Control.Feedback>
               </Form.Group>
 
-              {/* TODO-12: ô Mật khẩu (register-password) – làm tương tự ô Họ tên */}
+              <Form.Group className="mb-3" controlId="register-password">
+                <Form.Label>Mật khẩu *</Form.Label>
+                <Form.Control
+                  type="password"
+                  name="password"
+                  value={values.password}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  isInvalid={Boolean(showError('password'))}
+                />
+                <Form.Control.Feedback type="invalid">{showError('password')}</Form.Control.Feedback>
+              </Form.Group>
 
               <Form.Group className="mb-3" controlId="register-confirmPassword">
                 <Form.Label>Nhập lại mật khẩu *</Form.Label>
