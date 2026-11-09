@@ -8,13 +8,14 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "server": "json-server db.json --port 3001 --delay 300",
+    "server": "json-server --watch database.json --port 9999",
     "start": "concurrently -k -n API,WEB -c cyan,magenta \"npm run server\" \"npm run dev\"",
     "reset-db": "node scripts/reset-db.js",
     "test": "vitest run",
     "test:watch": "vitest"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^2.14.0",
     "axios": "^1.21.0",
     "bootstrap": "^5.3.8",
     "react": "^19.3.1",
@@ -22,7 +23,8 @@
     "react-dom": "^19.3.1",
     "react-redux": "^9.3.1",
     "react-router-dom": "^6.30.6",
-    "redux": "^5.0.1"
+    "redux": "^5.0.1",
+    "redux-thunk": "^3.1.0"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

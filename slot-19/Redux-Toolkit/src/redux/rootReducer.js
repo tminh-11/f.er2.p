@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import cartReducer from '../features/cart/cartSlice';
 import productsReducer from '../features/products/productsSlice';
+import studentsReducer from '../features/students/studentsSlice';
 import counterReducer from './counterReducer';
 import filterReducer from './reducers/filterReducer';
 import todosReducer from './reducers/todosReducer';
@@ -13,4 +14,5 @@ export default combineReducers({
   users: userReducer,
   cart: cartReducer,
   products: productsReducer,
+  students: studentsReducer,
 });
