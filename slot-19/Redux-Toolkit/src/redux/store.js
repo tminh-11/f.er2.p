@@ -1,15 +1,37 @@
-import { legacy_createStore as createStore, applyMiddleware, compose } from 'redux';
-import { thunk } from 'redux-thunk';
+import { configureStore } from '@reduxjs/toolkit';
 import rootReducer from './rootReducer';
 
-const logger = (store) => (next) => (action) => {
+const logger = () => (next) => (action) => {
   if (typeof action !== 'function') console.log('[action]', action.type);
   return next(action);
 };
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+function loadCart() {
+  try {
+    const savedCart = localStorage.getItem('cart');
+    if (!savedCart) return { items: [] };
 
-export const store = createStore(
-  rootReducer,
-  composeEnhancers(applyMiddleware(thunk, logger)),
-);
+    const items = JSON.parse(savedCart);
+    if (!Array.isArray(items)) throw new TypeError('Saved cart must be an array');
+    return { items };
+  } catch (error) {
+    console.error('Unable to load the saved cart from localStorage.', error);
+    return { items: [] };
+  }
+}
+
+export const store = configureStore({
+  reducer: rootReducer,
+  preloadedState: {
+    cart: loadCart(),
+  },
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
+});
+
+store.subscribe(() => {
+  try {
+    localStorage.setItem('cart', JSON.stringify(store.getState().cart.items));
+  } catch (error) {
+    console.error('Unable to save the cart to localStorage.', error);
+  }
+});
